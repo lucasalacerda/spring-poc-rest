@@ -1,5 +1,6 @@
 package hello;
 
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,11 +14,11 @@ public class MathOperationController {
     private final AtomicLong counter = new AtomicLong();
 
     @RequestMapping("/sum")
-    public double sum(@RequestParam(value="numberOne") double numberOne,
+    public String sum(@RequestParam(value="numberOne") double numberOne,
                              @RequestParam(value="numberTwo") double numberTwo) {
 
         MathOperation math = new MathOperation(counter.incrementAndGet(), numberOne, numberTwo);
-        return math.sumNumber();
+        return  String.format(template, math.sumNumber());
     }
 
 }

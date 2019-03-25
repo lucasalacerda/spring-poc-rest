@@ -28,4 +28,7 @@ targetCompatibility = 1.8
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    testRuntime("org.junit.platform:junit-platform-launcher:1.4.1")
+    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.4.1")
+    testRuntime("org.junit.vintage:junit-vintage-engine:5.4.1")
 }
