@@ -13,7 +13,7 @@ node {
          }
     }
     stage('Results') {
-        junit '**/target/surefire-reports/TEST-*.xml'
+        junit './build/test-results/test/TEST-*.xml'
         archiveArtifacts 'target/*.jar'
     }
 }
