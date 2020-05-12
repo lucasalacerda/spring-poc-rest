@@ -13,7 +13,7 @@ node {
          }
     }
     stage('Results') {
-        junit './build/test-results/test/TEST-*.xml'
+        junit '/build/test-results/test/TEST-*.xml'
         archiveArtifacts 'target/*.jar'
     }
 }
