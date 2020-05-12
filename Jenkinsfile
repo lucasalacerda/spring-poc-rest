@@ -4,12 +4,12 @@ node {
      }
     stage('Build') {
         withGradle {
-            sh './gradlew ./spring-poc-rest/build'
+            sh './gradlew build'
         }
     }
     stage('Build') {
          withGradle {
-            sh './gradlew ./spring-poc-rest/build'
+            sh './gradlew test'
          }
     }
     stage('Results') {
