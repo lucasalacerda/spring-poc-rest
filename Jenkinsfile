@@ -29,7 +29,7 @@ node {
                   "files": [
                     {
                       "pattern": "build/**/libs/*.jar",
-                      "target": "gradle-release-local/sprint-rest/"
+                      "target": "gradle-release-local"
                     }
                  ]
             }'''
