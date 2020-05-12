@@ -3,17 +3,17 @@ node {
           git 'https://github.com/lucasalacerda/spring-poc-rest.git'
      }
     stage('Build') {
-        withGradle(gradle:'gradle6') {
-            sh 'gradle build'
+        withGradle {
+            sh './gradlew build'
         }
     }
     stage('Build') {
-         withGradle(gradle:'gradle6') {
-            sh 'gradle test'
+         withGradle {
+            sh './gradlew test'
          }
     }
     stage('Results') {
-        junit '/build/test-results/test/TEST-*.xml'
+        junit 'build/**/TEST-*.xml'
 //         archiveArtifacts 'target/*.jar'
     }
 }
