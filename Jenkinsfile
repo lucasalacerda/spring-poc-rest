@@ -23,17 +23,16 @@ node {
             credentialsId: 'artifactory_id'
          )
 
-
         rtUpload (
             serverId: 'ARTIFACTORY_SERVER',
             spec: '''{
                   "files": [
                     {
                       "pattern": "build/**/libs/*.jar",
-                      "target": "gradle-dev-local/sprint-rest/"
+                      "target": "gradle-release-local/sprint-rest/"
                     }
                  ]
             }'''
-            )
+         )
      }
 }
