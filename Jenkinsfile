@@ -5,6 +5,7 @@ node {
     stage('Build') {
         withGradle {
             sh './gradlew build'
+            archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
         }
     }
     stage('Build') {
@@ -16,4 +17,11 @@ node {
         junit 'build/**/TEST-*.xml'
 //         archiveArtifacts 'target/*.jar'
     }
+     stage('Artifactory') {
+        rtServer (
+            id: "ARTIFACTORY_SERVER",
+            url: "http://172.17.0.3:8081/artifactory",
+            credentialsId: 'artifactory_id'
+         )
+     }
 }
