@@ -5,7 +5,7 @@ node {
     stage('Build') {
         withGradle {
             sh './gradlew build'
-            archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
+            archiveArtifacts artifacts: 'build/**/libs/*.jar', fingerprint: true
         }
     }
     stage('Build') {
