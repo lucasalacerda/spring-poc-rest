@@ -1,8 +1,12 @@
 node {
     stage('Build') {
-        sh "./gradlew build"
+        withGradle {
+            sh "./gradlew build"
+        }
     }
     stage('Build') {
-        sh "./gradlew test"
+         withGradle {
+            sh "./gradlew test"
+         }
     }
 }
