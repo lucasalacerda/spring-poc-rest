@@ -14,6 +14,6 @@ node {
     }
     stage('Results') {
         junit '/build/test-results/test/TEST-*.xml'
-        archiveArtifacts 'target/*.jar'
+//         archiveArtifacts 'target/*.jar'
     }
 }
