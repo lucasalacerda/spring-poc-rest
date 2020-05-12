@@ -3,12 +3,12 @@ node {
           git 'https://github.com/lucasalacerda/spring-poc-rest.git'
      }
     stage('Build') {
-        withGradle(gradleName:'gradle6') {
+        withGradle('gradle6') {
             sh 'gradle build'
         }
     }
     stage('Build') {
-         withGradle(gradleName:'gradle6') {
+         withGradle('gradle6') {
             sh 'gradle test'
          }
     }
