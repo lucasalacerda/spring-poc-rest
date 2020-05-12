@@ -15,7 +15,6 @@ node {
     }
     stage('Results') {
         junit 'build/**/TEST-*.xml'
-//         archiveArtifacts 'target/*.jar'
     }
      stage('Artifactory') {
         rtServer (
@@ -23,5 +22,18 @@ node {
             url: "http://172.17.0.3:8081/artifactory",
             credentialsId: 'artifactory_id'
          )
+
+
+        rtUpload (
+            serverId: 'ARTIFACTORY_SERVER',
+            spec: '''{
+                  "files": [
+                    {
+                      "pattern": "build/**/libs/*.jar",
+                      "target": "gradle-dev-local/sprint-rest/"
+                    }
+                 ]
+            }'''
+            )
      }
 }
