@@ -9,7 +9,7 @@ node {
     }
     stage('Build') {
          withGradle {
-            sh './gradlew test'
+            sh './gradlew clean test'
          }
     }
     stage('Results') {
