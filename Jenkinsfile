@@ -2,15 +2,14 @@ node {
     stage('Preparation') {
           git 'https://github.com/lucasalacerda/spring-poc-rest.git'
      }
-    stage('Build') {
-        withGradle {
-            sh './gradlew clean build'
-            archiveArtifacts artifacts: 'build/libs/*.jar', fingerprint: true
-        }
-    }
     stage('Test') {
         withGradle {
             sh './gradlew clean test'
+        }
+    }
+    stage('Build') {
+        withGradle {
+            sh './gradlew clean build'
             archiveArtifacts artifacts: 'build/libs/*.jar', fingerprint: true
         }
     }
