@@ -18,7 +18,7 @@ node {
     }
      stage('Artifactory') {
         rtServer (
-            id: "ARTIFACTORY_SERVER",
+            id: "aaaa",
             url: "http://172.17.0.3:8081/artifactory",
             credentialsId: 'artifactory_id'
         )
