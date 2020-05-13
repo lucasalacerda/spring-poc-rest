@@ -18,8 +18,9 @@ node {
     }
      stage('Artifactory') {
 
-        def server = Artifactory.newServer url: 'http://172.17.0.3:8081/artifactory',
-                                           credentialsId: 'artifactory_id'
+//         def server = Artifactory.newServer url: 'http://172.17.0.3:8081/artifactory',
+//                                            credentialsId: 'artifactory_id'
+        def server = Artifactory.server 'ARTIFACTORY_SERVER'
         def uploadSpec = """{
           "files": [
            {
