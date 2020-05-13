@@ -17,14 +17,9 @@ node {
         junit 'build/**/TEST-*.xml'
     }
      stage('Artifactory') {
-//         rtServer (
-//             id: "aaaa",
-//             url: "http://172.17.0.3:8081/artifactory",
-//             credentialsId: 'artifactory_id'
-//         )
 
-        def server = Artifactory.newServer url: 'http://172.17.0.3:8081/artifactory', credentialsId: 'artifactory_id'
-
+        def server = Artifactory.newServer url: 'http://172.17.0.3:8081/artifactory',
+                                           credentialsId: 'artifactory_id'
         def uploadSpec = """{
           "files": [
            {
@@ -33,11 +28,17 @@ node {
             }
          ]
         }"""
-//         def buildInfo = Artifactory.newBuildInfo()
-        def buildInfo1 = server.upload(uploadSpec)
-        server.publishBuildInfo buildInfo1
+        def buildInfo = Artifactory.newBuildInfo()
+        server.upload spec: uploadSpec, buildInfo: buildInfo
+        server.publishBuildInfo buildInfo
 
-
+        def promotionConfig = [
+            // Mandatory parameters
+            'buildName'          : buildInfo.name,
+            'buildNumber'        : buildInfo.number,
+            'targetRepo'         : 'libs-prod-ready-local'
+        ]
+        server.promote promotionConfig
 
 //         def urtUpload (
 //             serverId: 'ARTIFACTORY_SERVER',
