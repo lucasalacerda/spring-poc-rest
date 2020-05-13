@@ -32,14 +32,6 @@ node {
         server.upload spec: uploadSpec, buildInfo: buildInfo
         server.publishBuildInfo buildInfo
 
-        def promotionConfig = [
-            // Mandatory parameters
-            'buildName'          : buildInfo.name,
-            'buildNumber'        : buildInfo.number,
-            'targetRepo'         : 'gradle-release-local'
-        ]
-        server.promote promotionConfig
-
 //         def urtUpload (
 //             serverId: 'ARTIFACTORY_SERVER',
 //             spec: '''{
