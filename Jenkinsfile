@@ -5,7 +5,7 @@ node {
     stage('Build') {
         withGradle {
             sh './gradlew clean build'
-            archiveArtifacts artifacts: 'build/**/libs/*.jar', fingerprint: true
+            archiveArtifacts artifacts: 'build/libs/*.jar', fingerprint: true
         }
     }
     stage('Test') {
@@ -16,8 +16,6 @@ node {
 
      stage('Artifactory') {
         def server = Artifactory.server 'ARTIFACTORY_SERVER'
-        print server.username
-        print server.credentialsId
         def uploadSpec = """{
           "files": [
            {
