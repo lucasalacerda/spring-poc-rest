@@ -11,6 +11,7 @@ node {
     stage('Test') {
         withGradle {
             sh './gradlew clean test'
+            archiveArtifacts artifacts: 'build/libs/*.jar', fingerprint: true
         }
     }
 
