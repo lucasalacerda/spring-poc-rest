@@ -20,12 +20,12 @@ node {
 
 //         def server = Artifactory.newServer url: 'http://172.17.0.3:8081/artifactory',
 //                                            credentialsId: 'artifactory_id'
-        def server = Artifactory.server 'ARTIFACTORY_SERVER'
+        def server = Artifactory.server 'aaaaa'
         def uploadSpec = """{
           "files": [
            {
                 "pattern": "build/**/libs/*.jar",
-                "target": "gradle-release-local/"
+                "target": "gradle-release-local/spring-poc-rest/"
             }
          ]
         }"""
