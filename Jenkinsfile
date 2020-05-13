@@ -33,7 +33,11 @@ node {
             }
          ]
         }"""
-        server.upload(uploadSpec)
+//         def buildInfo = Artifactory.newBuildInfo()
+        def buildInfo1 = server.upload(uploadSpec)
+        server.publishBuildInfo buildInfo1
+
+
 
 //         def urtUpload (
 //             serverId: 'ARTIFACTORY_SERVER',
