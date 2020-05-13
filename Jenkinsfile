@@ -26,7 +26,7 @@ node {
         def uploadSpec = """{
           "files": [
            {
-                "pattern": "build/**/libs/*.jar",
+                "pattern": "build/libs/*.jar",
                 "target": "gradle-release-local/spring-poc-rest/"
             }
          ]
