@@ -18,8 +18,6 @@ node {
     }
      stage('Artifactory') {
         def server = Artifactory.server 'ARTIFACTORY_SERVER'
-        print server.username
-        print server.credentialsId
         def uploadSpec = """{
           "files": [
            {
