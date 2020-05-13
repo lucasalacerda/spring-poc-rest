@@ -36,7 +36,7 @@ node {
             // Mandatory parameters
             'buildName'          : buildInfo.name,
             'buildNumber'        : buildInfo.number,
-            'targetRepo'         : 'libs-prod-ready-local'
+            'targetRepo'         : 'gradle-release-local'
         ]
         server.promote promotionConfig
 
