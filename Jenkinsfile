@@ -8,6 +8,11 @@ node {
             archiveArtifacts artifacts: 'build/**/libs/*.jar', fingerprint: true
         }
     }
+    stage('Test') {
+        withGradle {
+            sh './gradlew clean test'
+        }
+    }
 
      stage('Artifactory') {
         def server = Artifactory.server 'ARTIFACTORY_SERVER'
@@ -26,13 +31,7 @@ node {
         server.upload spec: uploadSpec, buildInfo: buildInfo
         server.publishBuildInfo buildInfo
      }
-
-         stage('Build') {
-              withGradle {
-                 sh './gradlew clean test'
-              }
-         }
-         stage('Results') {
-             junit 'build/**/TEST-*.xml'
-         }
+     stage('Results') {
+        junit 'build/**/TEST-*.xml'
+     }
 }
