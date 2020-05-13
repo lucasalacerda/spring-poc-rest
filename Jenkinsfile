@@ -8,14 +8,14 @@ node {
             archiveArtifacts artifacts: 'build/**/libs/*.jar', fingerprint: true
         }
     }
-//     stage('Build') {
-//          withGradle {
-//             sh './gradlew clean test'
-//          }
-//     }
-//     stage('Results') {
-//         junit 'build/**/TEST-*.xml'
-//     }
+    stage('Build') {
+         withGradle {
+            sh './gradlew clean test'
+         }
+    }
+    stage('Results') {
+        junit 'build/**/TEST-*.xml'
+    }
      stage('Artifactory') {
         def server = Artifactory.server 'ARTIFACTORY_SERVER'
         print server.username
