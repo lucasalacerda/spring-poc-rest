@@ -14,6 +14,10 @@ node {
         }
     }
 
+    stage('packer') {
+        sh '/usr/bin/packer/packer'
+    }
+
      stage('Artifactory') {
         def server = Artifactory.server 'ARTIFACTORY_SERVER'
         def uploadSpec = """{
