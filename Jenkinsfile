@@ -15,7 +15,9 @@ node {
     }
 
     stage('packer') {
-        sh '/usr/bin/packer/packer'
+        sh '''
+            packer
+           '''
     }
 
      stage('Artifactory') {
