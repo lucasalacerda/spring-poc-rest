@@ -13,13 +13,6 @@ node {
             archiveArtifacts artifacts: 'build/libs/*.jar', fingerprint: true
         }
     }
-
-    stage('packer') {
-        sh '''
-            packer --version
-           '''
-    }
-
      stage('Artifactory') {
         def server = Artifactory.server 'ARTIFACTORY_SERVER'
         def uploadSpec = """{
@@ -34,6 +27,11 @@ node {
         def buildInfo = Artifactory.newBuildInfo()
         server.upload spec: uploadSpec, buildInfo: buildInfo
         server.publishBuildInfo buildInfo
+     }
+     stage('packer') {
+        sh '''
+            packer --version
+           '''
      }
      stage('Results') {
         junit 'build/**/TEST-*.xml'
