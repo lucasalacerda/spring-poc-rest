@@ -16,7 +16,7 @@ node {
 
     stage('packer') {
         sh '''
-            packer
+            packer --version
            '''
     }
 
